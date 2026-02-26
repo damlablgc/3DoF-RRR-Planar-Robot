@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="robot_world">
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <model name="rrr_kol">
+      <joint name="world_fixed" type="fixed">
+        <parent>world</parent>
+        <child>base_link</child>
+      </joint>
+
+      <link name="base_link">
+        <pose>0 0 0 0 0 0</pose>
+        <visual name="v_base">
+          <geometry><cylinder><radius>0.1</radius><length>0.1</length></cylinder></geometry>
+          <material><ambient>0 0 1 1</ambient><diffuse>0 0 1 1</diffuse></material> </visual>
+      </link>
+
+      <link name="link1">
+        <pose>0 0 0.05 0 0 0</pose>
+        <visual name="v1">
+          <pose>0.25 0 0 0 0 0</pose>
+          <geometry><box><size>0.5 0.05 0.05</size></box></geometry>
+          <material><ambient>0 1 0 1</ambient><diffuse>0 1 0 1</diffuse></material> </visual>
+      </link>
+      <joint name="j1" type="revolute">
+        <parent>base_link</parent>
+        <child>link1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit><lower>-3.14</lower><upper>3.14</upper></limit> </axis>
+      </joint>
+
+      <link name="link2">
+        <pose>0.5 0 0.05 0 0 0</pose>
+        <visual name="v2">
+          <pose>0.2 0 0 0 0 0</pose>
+          <geometry><box><size>0.4 0.05 0.05</size></box></geometry>
+          <material><ambient>1 0 0 1</ambient><diffuse>1 0 0 1</diffuse></material> </visual>
+      </link>
+      <joint name="j2" type="revolute">
+        <parent>link1</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit><lower>-3.14</lower><upper>3.14</upper></limit>
+        </axis>
+      </joint>
+
+      <link name="link3">
+        <pose>0.9 0 0.05 0 0 0</pose>
+        <visual name="v3">
+          <pose>0.15 0 0 0 0 0</pose>
+          <geometry><box><size>0.3 0.05 0.05</size></box></geometry>
+          <material><ambient>1 1 0 1</ambient><diffuse>1 1 0 1</diffuse></material> </visual>
+      </link>
+      <joint name="j3" type="revolute">
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit><lower>-3.14</lower><upper>3.14</upper></limit>
+        </axis>
+      </joint>
+    </model>
+  </world>
+</sdf>
