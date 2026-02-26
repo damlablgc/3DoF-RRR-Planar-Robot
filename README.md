@@ -10,7 +10,7 @@ Projede XY düzleminde hareket eden **RRR Planar Kol** konfigürasyonu seçilmi�
 ## 📂 Depo İçeriği
 - `kinematik.py`: İleri/Ters kinematik hesaplamalarını ve çalışma alanı görselleştirmesini yapan Python kodu.
 - `robot.sdf`: Gazebo simülasyonu için fizik, çarpışma ve görsel özellikleri tanımlanmış model dosyası.
-
+- `Rapor.pdf`: IMRAD formatında hazırlanmış, analitik çıkarımları ve hata analizini içeren detaylı proje raporu.
 ## 🚀 Çalıştırma Talimatları
 
 ### 1. Kinematik Analiz (Python)
